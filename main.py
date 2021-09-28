@@ -9,6 +9,8 @@ from io import BytesIO
 import requests
 from discord_components import *
 
+# да, тут дохуя ненужных модулей, хз зачем они тут)
+
 bot = commands.Bot(command_prefix = settings['prefix'])
 
 @bot.event
