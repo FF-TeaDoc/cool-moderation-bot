@@ -2,5 +2,6 @@ settings = {
     'token': 'token',
     'bot': 'name',
     'id': id,
-    'prefix': 'prefix',
+    'prefix': 'FDJSHFSJD',
+    'invite_link': 'Ваша ссылка'
 }
