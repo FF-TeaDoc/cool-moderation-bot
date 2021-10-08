@@ -4,5 +4,3 @@ settings = {
     'id': id,
     'prefix': 'prefix',
 }
-
-# https://discord.com/developers/applications
